@@ -7,7 +7,7 @@ import { ProductCard } from '../components/ProductCard'
 import { usePageTitle } from '../hooks/usePageTitle'
 import { supabase } from '../lib/supabase'
 import heroImage from '../assets/Blue and White Modern Real Estate Email Header-4.png'
-import heroImageMobile from '../assets/Power Tools Business Etsy Banner-2.png'
+import heroImageMobile from '../assets/Yellow Minimal Construction Company Banner.png'
 
 export function HomePage() {
   usePageTitle('Elemente de fixare profesionale pentru construcții')

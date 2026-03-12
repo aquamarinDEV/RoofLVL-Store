@@ -111,7 +111,7 @@ export function CategoryPage() {
               </div>
             )}
           </div>
-          <div className="page-meta">
+          <div className="page-meta page-meta-filter-hint">
             Filtrează după preț, dimensiune, material și tip pentru a găsi exact produsul potrivit.
           </div>
         </div>

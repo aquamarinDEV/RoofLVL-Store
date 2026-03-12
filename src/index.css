@@ -156,6 +156,42 @@ button {
   gap: 0.75rem;
 }
 
+.header-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  color: #e5e7eb;
+}
+.header-hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+.app-header.menu-open .header-hamburger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.app-header.menu-open .header-hamburger span:nth-child(2) {
+  opacity: 0;
+}
+.app-header.menu-open .header-hamburger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.header-nav-mobile {
+  display: none;
+}
+
 .header-nav {
   display: flex;
   align-items: center;
@@ -245,8 +281,9 @@ button {
 .header-actions .header-link {
   padding: 0.4rem 0.9rem;
   border-radius: 8px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  background: transparent;
+  font-weight: 500;
 }
 
 .header-link {
@@ -1639,13 +1676,50 @@ button {
 }
 
 @media (max-width: 720px) {
-  /* Conținutul principal mai aproape de header pe mobil */
+  /* Spațiu normal pe toate paginile */
   .app-main {
     padding-top: 0.5rem;
   }
 
   .app-header-inner {
     flex-wrap: wrap;
+  }
+
+  /* Meniu hamburger pe mobil */
+  .header-hamburger {
+    display: flex;
+  }
+
+  .header-nav {
+    display: none;
+  }
+
+  .header-nav-mobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    padding-top: 0;
+    border-top: none;
+    gap: 0;
+    transition: max-height 200ms ease;
+  }
+
+  .header-nav-mobile .header-link {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  }
+
+  .app-header.menu-open .header-nav-mobile {
+    max-height: 320px;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(55, 65, 81, 0.6);
+  }
+
+  /* Ascunde textul de filtrare pe mobil */
+  .page-meta-filter-hint {
+    display: none;
   }
 
   /* Ascunde bara de căutare în header pe mobil */
@@ -1658,9 +1732,9 @@ button {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* Imaginea de sub header să fie lipită de header și pe toată lățimea pe mobil */
+  /* Doar pe home: imaginea hero lipită de header; pe restul paginilor spațiul rămâne */
   .hero {
-    margin-top: 0;
+    margin-top: -0.5rem;
   }
 
   .hero-image-wrapper {

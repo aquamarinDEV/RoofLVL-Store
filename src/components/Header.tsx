@@ -2,10 +2,23 @@ import { type FormEvent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import logo from '../assets/ROOF LVL (2) (1).svg'
+
+function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
+  return (
+    <>
+      <Link to="/" className="header-link" onClick={onNavigate}>Acasă</Link>
+      <Link to="/produse" className="header-link" onClick={onNavigate}>Produse</Link>
+      <Link to="/despre-noi" className="header-link" onClick={onNavigate}>Despre noi</Link>
+      <Link to="/contact" className="header-link" onClick={onNavigate}>Contact</Link>
+    </>
+  )
+}
+
 export function Header() {
   const { state } = useCart()
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const totalItems = state.items.reduce((sum, item) => sum + item.quantity, 0)
 
@@ -16,8 +29,12 @@ export function Header() {
     navigate(`/cautare?q=${encodeURIComponent(trimmed)}`)
   }
 
+  function closeMenu() {
+    setMenuOpen(false)
+  }
+
   return (
-    <header className="app-header">
+    <header className={`app-header ${menuOpen ? 'menu-open' : ''}`}>
       <div className="app-header-inner">
         <div className="header-top">
           <Link to="/">
@@ -41,26 +58,28 @@ export function Header() {
           </form>
 
           <div className="header-actions">
-            <Link to="/cos" className="header-link">
-              <span className="icon">🧺</span>
+            <button
+              type="button"
+              className="header-hamburger"
+              aria-label="Meniul"
+              onClick={() => setMenuOpen((o) => !o)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+            <Link to="/cos" className="header-link header-link-cart">
+              <span className="icon">🛒</span>
               <span>Coș ({totalItems})</span>
             </Link>
           </div>
         </div>
 
         <nav className="header-nav">
-          <Link to="/" className="header-link">
-            Acasă
-          </Link>
-          <Link to="/produse" className="header-link">
-            Produse
-          </Link>
-          <Link to="/despre-noi" className="header-link">
-            Despre noi
-          </Link>
-          <Link to="/contact" className="header-link">
-            Contact
-          </Link>
+          <NavLinks />
+        </nav>
+        <nav className="header-nav-mobile">
+          <NavLinks onNavigate={closeMenu} />
         </nav>
       </div>
     </header>
