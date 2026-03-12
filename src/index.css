@@ -392,6 +392,15 @@ button {
   display: block;
 }
 
+/* Variante desktop / mobile pentru imaginea hero */
+.hero-image-mobile {
+  display: none;
+}
+
+.hero-image-desktop {
+  display: block;
+}
+
 .hero-title {
   font-size: clamp(2.1rem, 3vw, 2.6rem);
   font-weight: 800;
@@ -1630,6 +1639,11 @@ button {
 }
 
 @media (max-width: 720px) {
+  /* Conținutul principal mai aproape de header pe mobil */
+  .app-main {
+    padding-top: 0.5rem;
+  }
+
   .app-header-inner {
     flex-wrap: wrap;
   }
@@ -1644,8 +1658,24 @@ button {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  /* Imaginea de sub header să fie lipită de header și pe toată lățimea pe mobil */
   .hero {
-    margin-top: 1.4rem;
+    margin-top: 0;
+  }
+
+  .hero-image-wrapper {
+    border-radius: 0;
+    margin: 0 -1.25rem;
+  }
+
+  .hero-image-desktop {
+    display: none;
+  }
+
+  .hero-image-mobile {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   /* Ascunde butonul "Vezi toate produsele" din hero pe mobil */
@@ -1653,10 +1683,39 @@ button {
     display: none;
   }
 
+  /* Ajustează cardurile de produs pe mobil ca butonul să nu mai iasă din card */
+  .product-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-add-cart {
+    width: 100%;
+    justify-content: center;
+  }
+
   .benefit-strip {
     flex-direction: column;
     gap: 0.6rem;
     align-items: flex-start;
+  }
+
+  /* Categoriile principale puțin mai compacte pe mobil */
+  .category-grid {
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+
+  .category-card {
+    padding: 0.45rem 0.5rem;
+  }
+
+  .category-name {
+    font-size: 0.8rem;
+  }
+
+  .category-meta {
+    font-size: 0.68rem;
   }
 }
 

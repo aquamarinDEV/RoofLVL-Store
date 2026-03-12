@@ -7,6 +7,7 @@ import { ProductCard } from '../components/ProductCard'
 import { usePageTitle } from '../hooks/usePageTitle'
 import { supabase } from '../lib/supabase'
 import heroImage from '../assets/Blue and White Modern Real Estate Email Header-4.png'
+import heroImageMobile from '../assets/Power Tools Business Etsy Banner-2.png'
 
 export function HomePage() {
   usePageTitle('Elemente de fixare profesionale pentru construcții')
@@ -59,7 +60,12 @@ export function HomePage() {
             <img
               src={heroImage}
               alt="RoofLVL - elemente de fixare profesionale pentru construcții"
-              className="hero-image"
+              className="hero-image hero-image-desktop"
+            />
+            <img
+              src={heroImageMobile}
+              alt="RoofLVL - elemente de fixare profesionale pentru construcții"
+              className="hero-image hero-image-mobile"
             />
           </div>
           <div className="hero-cta-row">
