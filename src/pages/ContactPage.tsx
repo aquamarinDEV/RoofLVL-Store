@@ -2,12 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { usePageTitle } from '../hooks/usePageTitle'
 import { supabase } from '../lib/supabase'
-import { useToast } from '../context/ToastContext'
 
 export function ContactPage() {
   usePageTitle('Contact')
   const formRef = useRef<HTMLFormElement>(null)
-  const { showToast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
