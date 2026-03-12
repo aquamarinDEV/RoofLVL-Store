@@ -94,7 +94,9 @@ export function HomePage() {
             </p>
           </div>
           <div className="section-actions">
-            <Link to="/categorie/cuie-in-banda">Vezi toate cuiele în bandă →</Link>
+            <Link to="/categorie/cuie-in-banda" className="section-actions-link-all">
+              Vezi toate cuiele în bandă →
+            </Link>
           </div>
         </div>
         <div className="product-grid">
@@ -127,7 +129,9 @@ export function HomePage() {
             </p>
           </div>
           <div className="section-actions">
-            <Link to="/produse">Vezi toate produsele →</Link>
+            <Link to="/produse" className="section-actions-link-all">
+              Vezi toate produsele →
+            </Link>
           </div>
         </div>
         <div className="product-grid">

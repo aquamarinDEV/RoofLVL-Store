@@ -628,6 +628,13 @@ button {
   color: var(--color-brand-dark);
 }
 
+/* Ascunde link-urile "Vezi toate produsele" doar pe mobil */
+@media (max-width: 720px) {
+  .section-actions-link-all {
+    display: none;
+  }
+}
+
 .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -1627,8 +1634,23 @@ button {
     flex-wrap: wrap;
   }
 
+  /* Ascunde bara de căutare în header pe mobil */
+  .header-search {
+    display: none;
+  }
+
+  /* Forțează grila de produse să aibă cel puțin 2 coloane pe mobil, dacă spațiul permite */
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .hero {
     margin-top: 1.4rem;
+  }
+
+  /* Ascunde butonul "Vezi toate produsele" din hero pe mobil */
+  .hero-cta-row .btn-hero {
+    display: none;
   }
 
   .benefit-strip {
