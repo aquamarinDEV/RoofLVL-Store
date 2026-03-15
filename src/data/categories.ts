@@ -7,6 +7,9 @@ export type CategorySlug =
   | 'coame'
   | 'dolii'
   | 'sorturi'
+  | 'parazapezi'
+  | 'frontoane'
+  | 'alte-accesorii-acoperis'
 
 export interface Category {
   id: string
@@ -85,6 +88,33 @@ export const categories: Category[] = [
     description: 'Șorțuri de acoperiș.',
     icon: '🏠',
     highlights: ['Șorțuri'],
+    parentSlug: 'accesorii-tigla-metalica',
+  },
+  {
+    id: 'parazapezi',
+    name: 'Parazapezi',
+    slug: 'parazapezi',
+    description: 'Opritoare de zăpadă pentru acoperișuri.',
+    icon: '❄️',
+    highlights: ['Opritor de zăpadă', 'Siguranță acoperiș'],
+    parentSlug: 'accesorii-tigla-metalica',
+  },
+  {
+    id: 'frontoane',
+    name: 'Frontoane',
+    slug: 'frontoane',
+    description: 'Borduri și profile pentru fronton.',
+    icon: '🏠',
+    highlights: ['Bordură fronton', 'Fronton'],
+    parentSlug: 'accesorii-tigla-metalica',
+  },
+  {
+    id: 'alte-accesorii-acoperis',
+    name: 'Alte accesorii acoperiș',
+    slug: 'alte-accesorii-acoperis',
+    description: 'Alte accesorii pentru acoperiș și finisaj.',
+    icon: '🔧',
+    highlights: ['Bordură perete', 'Pazie acoperis', 'Accesorii'],
     parentSlug: 'accesorii-tigla-metalica',
   },
 ]

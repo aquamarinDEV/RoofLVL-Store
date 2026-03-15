@@ -66,7 +66,9 @@ export function CheckoutPage() {
             const formData = new FormData(form)
             const items = state.items.map((item) => ({
               productId: item.product.id,
-              productName: item.product.name,
+              productName: item.selectedRal
+                ? `${item.product.name} (${item.selectedRal})`
+                : item.product.name,
               quantity: item.quantity,
               price: item.product.price,
               unit: item.product.unit,

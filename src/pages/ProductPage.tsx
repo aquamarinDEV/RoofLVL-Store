@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { findProductBySlug, products } from '../data/products'
+import { DOLII_RAL_OPTIONS, findProductBySlug, products } from '../data/products'
 import { categories } from '../data/categories'
 import { useCart } from '../context/CartContext'
 import { productImages } from '../lib/productImages'
@@ -15,10 +15,16 @@ export function ProductPage() {
   const { addToCart } = useCart()
   const { showToast } = useToast()
   const [quantity, setQuantity] = useState(1)
+  const [selectedRal, setSelectedRal] = useState<string>('')
 
   useEffect(() => {
-    if (product) setQuantity(product.minQuantity)
-  }, [product?.id])
+    if (product) {
+      setQuantity(product.minQuantity)
+      if (product.categorySlug === 'dolii') setSelectedRal(DOLII_RAL_OPTIONS[0])
+      else if (product.colorOptions?.length) setSelectedRal(product.colorOptions[0])
+      else setSelectedRal('')
+    }
+  }, [product?.id, product?.categorySlug, product?.colorOptions])
 
   if (!product) {
     usePageTitle('Produs indisponibil')
@@ -139,6 +145,28 @@ export function ProductPage() {
             )}
           </div>
 
+          {(product.categorySlug === 'dolii' || (product.colorOptions?.length ?? 0) > 0) && (
+            <div className="form-field">
+              <label htmlFor="product-color">
+                {product.categorySlug === 'dolii' || product.categorySlug === 'parazapezi' || product.categorySlug === 'frontoane' || product.categorySlug === 'alte-accesorii-acoperis'
+                  ? 'Culoare RAL (alte coduri la cerere — contactati-ne)'
+                  : 'Culoare (alte coduri la cerere — contactati-ne)'}
+              </label>
+              <select
+                id="product-color"
+                value={selectedRal}
+                onChange={(e) => setSelectedRal(e.target.value)}
+                style={{ maxWidth: '220px' }}
+              >
+                {(product.categorySlug === 'dolii' ? DOLII_RAL_OPTIONS : product.colorOptions ?? []).map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
           <div className="product-page-actions">
             <div className="quantity-selector">
               <button
@@ -162,10 +190,15 @@ export function ProductPage() {
             <button
               type="button"
               className="btn-primary btn-product-add"
-            onClick={() => {
-              addToCart(product, quantity)
-              showToast('Produsul a fost adăugat în coș.')
-            }}
+              onClick={() => {
+                const needsVariant = product.categorySlug === 'dolii' || (product.colorOptions?.length ?? 0) > 0
+                if (needsVariant && !selectedRal) {
+                  showToast(product.categorySlug === 'dolii' || product.categorySlug === 'parazapezi' || product.categorySlug === 'frontoane' || product.categorySlug === 'alte-accesorii-acoperis' ? 'Alege o culoare RAL.' : 'Alege o culoare.')
+                  return
+                }
+                addToCart(product, quantity, needsVariant ? selectedRal : undefined)
+                showToast('Produsul a fost adăugat în coș.')
+              }}
             >
               Adaugă în coș
             </button>

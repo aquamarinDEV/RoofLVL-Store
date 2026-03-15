@@ -63,10 +63,14 @@ export function CartPage() {
                   minimumFractionDigits: 2,
                 }).format(lineTotal)
 
+                const lineKey = `${item.product.id}-${item.selectedRal ?? ''}`
                 return (
-                  <div key={item.product.id} className="cart-item">
+                  <div key={lineKey} className="cart-item">
                     <div className="cart-item-main">
-                      <div className="cart-item-name">{item.product.name}</div>
+                      <div className="cart-item-name">
+                        {item.product.name}
+                        {item.selectedRal ? ` (${item.selectedRal})` : ''}
+                      </div>
                       <div className="cart-item-meta">
                         {item.product.dimensions} · {item.product.material}
                       </div>
@@ -79,6 +83,7 @@ export function CartPage() {
                             setQuantity(
                               item.product.id,
                               Math.max(item.quantity - item.product.minQuantity, 0),
+                              item.selectedRal,
                             )
                           }
                         >
@@ -90,7 +95,11 @@ export function CartPage() {
                         <button
                           type="button"
                           onClick={() =>
-                            setQuantity(item.product.id, item.quantity + item.product.minQuantity)
+                            setQuantity(
+                              item.product.id,
+                              item.quantity + item.product.minQuantity,
+                              item.selectedRal,
+                            )
                           }
                         >
                           +
@@ -100,7 +109,7 @@ export function CartPage() {
                       <button
                         type="button"
                         className="btn-ghost"
-                        onClick={() => removeFromCart(item.product.id)}
+                        onClick={() => removeFromCart(item.product.id, item.selectedRal)}
                       >
                         Elimină
                       </button>

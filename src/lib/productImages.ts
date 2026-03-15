@@ -5,6 +5,10 @@ import AlubandImg from '../assets/Aluband.jpg'
 import CuieDeBetonImg from '../assets/CuieDeBeton.jpeg'
 import SortJgheabImg from '../assets/SortJgheab.jpg.webp'
 import DoliiImg from '../assets/Dolii.jpeg'
+import ParazapeziImg from '../assets/Parazapezi.jpg.webp'
+import BorduraFrontonImg from '../assets/BorduraFronton.jpeg'
+import BorduraPereteImg from '../assets/BorduraPerete.jpeg'
+import PazieImg from '../assets/Pazie.jpg.jpg'
 
 const coamaModules = import.meta.glob<{ default: string }>(
   [
@@ -32,5 +36,9 @@ export const productImages: Record<string, string> = {
   CuieDeBeton: CuieDeBetonImg,
   SortJgheab: SortJgheabImg,
   Dolii: DoliiImg,
+  Parazapezi: ParazapeziImg,
+  BorduraFronton: BorduraFrontonImg,
+  BorduraPerete: BorduraPereteImg,
+  Pazie: PazieImg,
   ...getCoamaImageKeys(),
 }
