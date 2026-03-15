@@ -9,6 +9,7 @@ import ParazapeziImg from '../assets/Parazapezi.jpg.webp'
 import BorduraFrontonImg from '../assets/BorduraFronton.jpeg'
 import BorduraPereteImg from '../assets/BorduraPerete.jpeg'
 import PazieImg from '../assets/Pazie.jpg.jpg'
+import FolieAntiCondensImg from '../assets/FolieAntiCondens.jpg'
 
 const coamaModules = import.meta.glob<{ default: string }>(
   [
@@ -40,5 +41,6 @@ export const productImages: Record<string, string> = {
   BorduraFronton: BorduraFrontonImg,
   BorduraPerete: BorduraPereteImg,
   Pazie: PazieImg,
+  FolieAntiCondens: FolieAntiCondensImg,
   ...getCoamaImageKeys(),
 }

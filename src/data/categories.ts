@@ -114,7 +114,7 @@ export const categories: Category[] = [
     slug: 'alte-accesorii-acoperis',
     description: 'Alte accesorii pentru acoperiș și finisaj.',
     icon: '🔧',
-    highlights: ['Bordură perete', 'Pazie acoperis', 'Accesorii'],
+    highlights: ['Bordură perete', 'Pazie acoperis', 'Folie anti condens', 'Accesorii'],
     parentSlug: 'accesorii-tigla-metalica',
   },
 ]
