@@ -23,7 +23,7 @@ export function Footer() {
               WhatsApp: 0785 754 952
             </a>
             <a
-              href="https://www.facebook.com/rooflvlshop"
+              href="https://www.facebook.com/p/Roof-LVL-61556692213419/"
               target="_blank"
               rel="noopener noreferrer"
             >
